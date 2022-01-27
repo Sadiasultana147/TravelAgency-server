@@ -1,5 +1,4 @@
-//user: Travel-Agency
-//Password: w44TIXfXCoUkSChG
+
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const cors = require("cors");
@@ -100,7 +99,7 @@ async function run() {
             const query = { _id: objectId(id) };
             const result = await blogCollection.deleteOne(query);
 
-            console.log('deleting purchases with id ', result);
+            console.log('deleting blogs with id ', result);
 
             res.json(result);
         })
@@ -162,7 +161,7 @@ async function run() {
             const query = { _id: objectId(id) };
             const result = await adminBlogCollection.deleteOne(query);
 
-            console.log('deleting purchases with id ', result);
+            console.log('deleting adminblogs with id ', result);
 
             res.json(result);
         })
