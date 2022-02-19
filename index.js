@@ -73,19 +73,22 @@ async function run() {
                 });
         });
         //  Blog info update
-        app.put("/updateInfo/:id", async (req, res) => {
+        app.put("/blogs/:id", async (req, res) => {
             const id = req.params.id;
-            const updatedInfo = req.body.description;
+            const updatedInfo = req.body;
             const filter = { _id: objectId(id) };
             const options = { upsert: true };
             const updateDoc = {
                 $set: {
 
-                    description: updatedInfo
+                    location: updatedInfo.location,
+                    cost: updatedInfo.cost,
+                    description: updatedInfo.description,
+                    date: updatedInfo.date
                 },
             };
             const result = await blogCollection.updateOne(filter, updateDoc, options)
-            console.log('updating', id)
+            console.log('updating', updatedInfo)
             res.json(result)
         });
 
