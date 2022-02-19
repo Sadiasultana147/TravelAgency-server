@@ -73,7 +73,7 @@ async function run() {
                 });
         });
         //  Blog info update
-        app.put("/blogs/:id", async (req, res) => {
+        app.put("/updateInfo/:id", async (req, res) => {
             const id = req.params.id;
             const updatedInfo = req.body;
             const filter = { _id: objectId(id) };
